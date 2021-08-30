@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Intership</string>
+
+
+    <string name="registerLogEvents">Informe os detalhes</string>
+    <string name="save">Salvar</string>
+
+    <string name="textEdta">%s de EDTA</string>
+    <string name="textSoro">%s de Soro</string>
+    <string name="textCitrato">%s de Citrato</string>
+    <string name="textUrina">%s de Urina</string>
+    <string name="textFezes">%s de Fezes</string>
+
+
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "771621492146",
+    "project_id": "intership---hernan",
+    "storage_bucket": "intership---hernan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771621492146:android:59b0c9c7607a181a5540ab",
+        "android_client_info": {
+          "package_name": "com.example.intership"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771621492146-qefhmsdro7j0vfc3oj3a2et04qbbbcds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2DRYgNH0YKP4xeTCtRMg38SmCjq-VPhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771621492146-qefhmsdro7j0vfc3oj3a2et04qbbbcds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
