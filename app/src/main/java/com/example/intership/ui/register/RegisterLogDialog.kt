@@ -1,13 +1,22 @@
 package com.example.intership.ui.register
 
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
+import androidx.core.view.drawToBitmap
 import com.example.intership.databinding.DialogRegisterUpdateLogBinding
 import com.example.intership.domain.dto.RegisterDto
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.ByteArrayOutputStream
+import java.io.File
 import java.time.LocalDateTime
 
 class RegisterLogDialog:BottomSheetDialogFragment() {
@@ -17,6 +26,9 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
     private val viewModel: RegisterLogViewModel by viewModel()
 
     lateinit var onSave:(() -> Unit)
+    private lateinit var pictureUri: Uri
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +61,8 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
 
         binding.btnUrinaPlus.setOnClickListener{ plusUrina() }
         binding.btnUrinaMinus.setOnClickListener{minusUrina()}
+
+        binding.btnCamera.setOnClickListener{takePicture()}
 
 
     }
@@ -88,7 +102,39 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
                         binding.tvCitratoQtd.text.toString().toInt().toString(),
                         binding.tvFezesQtd.text.toString().toInt().toString(),
                         binding.tvUrinaQtd.text.toString().toInt().toString(),
-                        rbSelected()))
+                        rbSelected(),
+                        convertImage()))
         onSaveSuccess()
     }
+
+
+    private fun takePicture() {
+        createPictureFile()
+        takePictureLauncher.launch(pictureUri)
+
+    }
+    private fun createPictureFile() {
+        val pictureDir = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val pictureFile = File(pictureDir,"pic1")
+
+        this.pictureUri =
+            FileProvider.getUriForFile(requireActivity(), "com.example.intership.fileprovider", pictureFile)
+    }
+    private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { pictureTaken ->
+        if (pictureTaken) {
+            binding.imgAmostras.setImageURI(this.pictureUri)
+
+        }
+    }
+
+    private fun convertImage(): String {
+        return if(binding.imgAmostras.drawable!=null){
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            val image = binding.imgAmostras.drawToBitmap()
+            image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+            Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
+        }else{
+            ""
+        }
+}
 }

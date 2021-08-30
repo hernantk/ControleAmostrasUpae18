@@ -7,5 +7,6 @@ data class RegisterDto(
     val citrato:String,
     val fezes:String,
     val urina:String,
-    val localDeColeta:String
+    val localDeColeta:String,
+    val imgAmostras:String,
 )

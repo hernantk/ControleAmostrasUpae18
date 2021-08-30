@@ -1,13 +1,23 @@
 package com.example.intership.ui.update
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
+import androidx.core.view.drawToBitmap
 import com.example.intership.databinding.DialogRegisterUpdateLogBinding
 import com.example.intership.domain.dto.LogDto
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.ByteArrayOutputStream
+import java.io.File
 
 class UpdateLogDialog:BottomSheetDialogFragment() {
 
@@ -17,6 +27,7 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
 
     lateinit var onUpdate:(() -> Unit)
     lateinit var log:LogDto
+    private lateinit var pictureUri: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,7 +71,10 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
 
         binding.btnUrinaPlus.setOnClickListener{ plusUrina() }
         binding.btnUrinaMinus.setOnClickListener{minusUrina()}
+
         binding.btnDelete.setOnClickListener{delete()}
+
+        binding.btnCamera.setOnClickListener{takePicture()}
 
 
     }
@@ -93,6 +107,8 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
         }
     }
     private fun loadRb(){
+        val image = Base64.decode(log.imgAmostras, Base64.DEFAULT)
+        binding.imgAmostras.setImageBitmap(BitmapFactory.decodeByteArray(image,0, image.size))
         if(log.localDeColeta==binding.rbUpa.text){
             binding.rbUpa.isChecked=true
         }
@@ -108,11 +124,39 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
                         binding.tvCitratoQtd.text.toString(),
                         binding.tvFezesQtd.text.toString(),
                         binding.tvUrinaQtd.text.toString(),
-                        rbSelected()))
+                        rbSelected(),
+                        convertImage()))
         onSuccess()
     }
     private fun delete() {
         viewModel.delete(log.id)
         onSuccess()
+    }
+
+    private fun takePicture() {
+        createPictureFile()
+        takePictureLauncher.launch(pictureUri)
+
+    }
+    private fun createPictureFile() {
+        val pictureDir = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val pictureFile = File(pictureDir,"pic1")
+
+        this.pictureUri =
+            FileProvider.getUriForFile(requireActivity(), "com.example.intership.fileprovider", pictureFile)
+    }
+    private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { pictureTaken ->
+        if (pictureTaken) {
+            binding.imgAmostras.setImageURI(this.pictureUri)
+
+        }
+    }
+
+    private fun convertImage(): String {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        val image = binding.imgAmostras.drawToBitmap()
+        image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
+
     }
 }

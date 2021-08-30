@@ -10,71 +10,81 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="4dp"
-        android:text="28/06/2021 08:00"
-        app:layout_constraintBottom_toTopOf="@+id/tvLocaldeColeta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.363" />
-
-    <TextView
-        android:id="@+id/tvEdta"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/textEdta"
-        app:layout_constraintStart_toEndOf="@+id/tvDate"
-        app:layout_constraintTop_toTopOf="@+id/tvDate" />
-
-    <TextView
-        android:id="@+id/tvSoro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/textSoro"
-        app:layout_constraintStart_toEndOf="@+id/tvEdta"
-        app:layout_constraintTop_toTopOf="@+id/tvEdta" />
+        android:layout_marginTop="8dp"
+        android:text="28/06/2021 08:00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvCitrato"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="8dp"
         android:text="@string/textCitrato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvSoro"
-        app:layout_constraintTop_toTopOf="@+id/tvEdta" />
-
-    <TextView
-        android:id="@+id/tvUrina"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="@string/textUrina"
-        app:layout_constraintEnd_toStartOf="@+id/tvFezes"
-        app:layout_constraintTop_toTopOf="@+id/tvLocaldeColeta" />
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvSoro" />
 
     <TextView
         android:id="@+id/tvFezes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
         android:text="@string/textFezes"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintTop_toTopOf="@+id/tvDate" />
+
+    <TextView
+        android:id="@+id/tvEdta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:text="@string/textEdta"
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintTop_toTopOf="@+id/tvFezes" />
+
+    <TextView
+        android:id="@+id/tvUrina"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/textUrina"
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
+        app:layout_constraintTop_toTopOf="@+id/tvLocaldeColeta" />
+
+    <TextView
+        android:id="@+id/tvSoro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:text="@string/textSoro"
+        app:layout_constraintStart_toEndOf="@+id/tvDate"
         app:layout_constraintTop_toTopOf="@+id/tvUrina" />
 
     <TextView
         android:id="@+id/tvLocaldeColeta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Local de Coleta"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+    <ImageView
+        android:id="@+id/imgAmostras"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLocaldeColeta"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

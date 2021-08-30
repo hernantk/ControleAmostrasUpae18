@@ -11,4 +11,5 @@ data class LogDto (
     val fezes:String,
     val urina:String,
     val localDeColeta:String,
+    val imgAmostras:String,
 )

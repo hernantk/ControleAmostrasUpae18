@@ -31,7 +31,8 @@ class LogRepository(private val firestore : FirebaseFirestore) {
                     log.getString("citrato") ?:"0",
                     log.getString("fezes") ?:"0",
                     log.getString("urina") ?:"0",
-                    log.getString("localDeColeta")?:"",)
+                    log.getString("localDeColeta")?:"",
+                    log.getString("imgAmostras")?:"")
             }
                 onSuccess(result)
             }
@@ -47,7 +48,8 @@ class LogRepository(private val firestore : FirebaseFirestore) {
                 "citrato" to log.citrato,
                 "fezes" to log.fezes,
                 "urina" to log.urina,
-                "localDeColeta" to log.localDeColeta
+                "localDeColeta" to log.localDeColeta,
+                "imgAmostras" to log.imgAmostras
 
             ))
     }
