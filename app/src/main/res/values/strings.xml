@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">Intership</string>
+    <string name="app_name">Controle Upa e 18</string>
 
 
-    <string name="registerLogEvents">Informe os detalhes</string>
     <string name="save">Salvar</string>
-
     <string name="textEdta">%s de EDTA</string>
     <string name="textSoro">%s de Soro</string>
     <string name="textCitrato">%s de Citrato</string>
