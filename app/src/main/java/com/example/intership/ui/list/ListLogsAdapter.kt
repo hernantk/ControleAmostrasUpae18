@@ -14,7 +14,7 @@ import com.example.intership.domain.dto.LogDto
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class ListLogsAdapter(val goUpdateLog: (Int) -> Unit) : RecyclerView.Adapter<ListLogsAdapter.LogsViewHolder>() {
+class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> Unit) : RecyclerView.Adapter<ListLogsAdapter.LogsViewHolder>() {
 
 
     var logs:List<LogDto> = listOf()
@@ -33,6 +33,7 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit) : RecyclerView.Adapter<Lis
     override fun onBindViewHolder(holder: LogsViewHolder, position: Int) {
         holder.bing(logs[position])
         holder.btnUpdateItem.setOnClickListener{ goUpdateLog(position)}
+        holder.btnOpenImage.setOnClickListener{goOpenImage(position)}
     }
 
     override fun getItemCount() = logs.size
@@ -51,12 +52,20 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit) : RecyclerView.Adapter<Lis
             binding.tvDate.text = log.date.format(dateFormater)
             showIfHasAny(log)
             binding.tvLocaldeColeta.text = log.localDeColeta
-
+            if(log.imgAmostras==""){
+                binding.btnImage.visibility=View.GONE
+            }
+            else{
+                binding.btnImage.visibility=View.VISIBLE
+            }
 
 
         }
-        val btnUpdateItem: ConstraintLayout
-            get() = binding.tvLog
+        val btnUpdateItem: ImageButton
+            get() = binding.btnEdit
+
+        val btnOpenImage: ImageButton
+            get() = binding.btnImage
 
 
         fun showIfHasAny(log:LogDto){
@@ -71,19 +80,6 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit) : RecyclerView.Adapter<Lis
                 binding.tvCitrato.visibility = View.VISIBLE
                 binding.tvFezes.visibility = View.VISIBLE
                 binding.tvUrina.visibility = View.VISIBLE
-                if(log.imgAmostras!=""){
-                    val image = Base64.decode(log.imgAmostras, Base64.DEFAULT)
-                    binding.imgAmostras.setImageBitmap(BitmapFactory.decodeByteArray(image,0, image.size))
-                    binding.imgAmostras.visibility=View.VISIBLE
-                }
-                //if(log.edta.toInt()<=0) { binding.tvEdta.visibility = View.GONE }
-                //if(log.soro.toInt()<=0){ binding.tvSoro.visibility = View.GONE}
-                //if(log.citrato.toInt()<=0){ binding.tvCitrato.visibility = View.GONE}
-                //if(log.fezes.toInt()<=0){ binding.tvFezes.visibility = View.GONE }
-                //if(log.urina.toInt()<=0){ binding.tvUrina.visibility = View.GONE }
-
-
-
 
 
             }

@@ -338,10 +338,11 @@
         android:id="@+id/btnCamera"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:backgroundTint="@color/white"
         android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

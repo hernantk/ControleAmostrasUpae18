@@ -8,6 +8,7 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
@@ -128,11 +129,16 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
     }
 
     private fun convertImage(): String {
+
         return if(binding.imgAmostras.drawable!=null){
+            val imageNoLoss: ImageView = binding.imgAmostras
+            imageNoLoss.setImageURI(pictureUri)
             val byteArrayOutputStream = ByteArrayOutputStream()
-            val image = binding.imgAmostras.drawToBitmap()
-            image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+            val image = imageNoLoss.drawToBitmap()
+            image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
             Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
+
+
         }else{
             ""
         }

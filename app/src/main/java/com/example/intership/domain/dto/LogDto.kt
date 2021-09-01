@@ -1,5 +1,6 @@
 package com.example.intership.domain.dto
 
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class LogDto (
@@ -12,4 +13,4 @@ data class LogDto (
     val urina:String,
     val localDeColeta:String,
     val imgAmostras:String,
-)
+): Serializable
