@@ -61,7 +61,7 @@ class ListLogsActivity : AppCompatActivity() {
                 .build()
         datePicker.addOnPositiveButtonClickListener {day->
             val dateString: String = DateFormat.format("yyyy-MM-dd", Date(day)).toString()
-            adapter.setNewData(LocalDate.parse(dateString))
+            adapter.setNewData(LocalDate.parse(dateString).plusDays(1))
         }
         when(item.itemId){
             R.id.idCalendar -> {
