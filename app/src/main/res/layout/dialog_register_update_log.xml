@@ -18,7 +18,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -27,19 +27,18 @@
             android:id="@+id/btnEdtaMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
             android:text="-"
-            app:layout_constraintStart_toEndOf="@+id/chipEdta"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnEdtaPlus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="16dp"
             android:text="+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvEdtaQtd"
@@ -49,7 +48,7 @@
             android:id="@+id/tvEdtaQtd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:text="0"
             android:textSize="20dp"
@@ -63,8 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="EDTA"
+            app:chipIcon="@drawable/circle"
+            app:chipIconTint="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnEdtaMinus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,7 +73,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consSoro"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
@@ -82,10 +82,10 @@
             android:id="@+id/btnSoroMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
             android:text="-"
-            app:layout_constraintStart_toEndOf="@+id/chipSoro"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -94,7 +94,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="16dp"
             android:text="+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvSoroQtd"
@@ -104,7 +103,7 @@
             android:id="@+id/tvSoroQtd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:text="0"
             android:textSize="20dp"
@@ -118,8 +117,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Soro"
+            app:chipIcon="@drawable/circle"
+            app:chipIconTint="@color/red"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnSoroMinus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,7 +128,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consUrina"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -137,10 +137,10 @@
             android:id="@+id/btnUrinaMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
             android:text="-"
-            app:layout_constraintStart_toEndOf="@+id/chipUrina"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -149,7 +149,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="16dp"
             android:text="+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvUrinaQtd"
@@ -159,7 +158,7 @@
             android:id="@+id/tvUrinaQtd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:text="0"
             android:textSize="20dp"
@@ -172,9 +171,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            app:chipIcon="@drawable/circle"
+            app:chipIconTint="@color/yellow"
             android:text="Urina"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUrinaMinus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -183,21 +183,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consFezes"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="212dp"
         android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/consSoro"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btnFezesMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
             android:text="-"
-            app:layout_constraintStart_toEndOf="@+id/chipFezes"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -206,7 +205,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="16dp"
             android:text="+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvFezesQtd"
@@ -216,7 +214,7 @@
             android:id="@+id/tvFezesQtd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:text="0"
             android:textSize="20dp"
@@ -230,8 +228,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Fezes"
+            app:chipIcon="@drawable/circle"
+            app:chipIconTint="@color/brown"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnFezesMinus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -240,17 +239,20 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:text="Salvar"
+
+        app:icon="@drawable/ic_baseline_add_task_24"
+        android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/btnCamera"
         app:layout_constraintStart_toEndOf="@+id/btnDelete"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consCitrato"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/consSoro">
@@ -259,10 +261,10 @@
             android:id="@+id/btnCitratoMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
             android:text="-"
-            app:layout_constraintStart_toEndOf="@+id/chipCitrato"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -271,7 +273,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="16dp"
             android:text="+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvCitratoQtd"
@@ -281,7 +282,7 @@
             android:id="@+id/tvCitratoQtd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
             android:text="0"
             android:textSize="20dp"
@@ -295,8 +296,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Citrato"
+            app:chipIcon="@drawable/circle"
+            app:chipIconTint="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnCitratoMinus"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -328,18 +330,18 @@
         android:id="@+id/btnDelete"
         android:layout_width="48dp"
         android:layout_height="48dp"
-
         android:visibility="gone"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     <ImageButton
         android:id="@+id/btnCamera"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:backgroundTint="@color/white"
         android:layout_marginTop="14dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />

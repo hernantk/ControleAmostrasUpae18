@@ -1,6 +1,7 @@
 package com.example.intership.ui.list
 
 import android.graphics.BitmapFactory
+import android.text.format.DateFormat
 import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
@@ -11,22 +12,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.intership.R
 import com.example.intership.databinding.ItemLogBinding
 import com.example.intership.domain.dto.LogDto
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> Unit) : RecyclerView.Adapter<ListLogsAdapter.LogsViewHolder>() {
 
+    var mlogs:List<LogDto> = listOf()
+        set(value){
+            field = value
+            notifyDataSetChanged()
+        }
 
-    var logs:List<LogDto> = listOf()
-    set(value){
-        field = value
-        notifyDataSetChanged()
-    }
+    var logs:List<LogDto> = mlogs
+
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogsViewHolder {
-        val itemView= LayoutInflater.from(parent.context).inflate(R.layout.item_log,parent,false)
+        val itemView= LayoutInflater.from(parent.context).inflate(R.layout.new_item_log,parent,false)
         return LogsViewHolder(itemView)
     }
 
@@ -39,7 +44,11 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
     override fun getItemCount() = logs.size
 
     fun setNewData(){
-        logs = logs.filter { logDto -> logDto.date.dayOfMonth== LocalDateTime.now().dayOfMonth  }
+        logs = mlogs.filter { logDto -> LocalDate.parse(logDto.date.toString().removeRange(10,23)) == LocalDate.now()  }
+        notifyDataSetChanged()
+    }
+    fun setNewData(date:LocalDate){
+        logs = mlogs.filter { logDto -> LocalDate.parse(logDto.date.toString().removeRange(10,23)) == date  }
         notifyDataSetChanged()
     }
 

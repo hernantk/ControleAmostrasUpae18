@@ -7,8 +7,12 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.format.DateFormat
 import android.util.Base64
+import android.util.Base64.DEFAULT
+import android.util.Base64.decode
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.intership.R
@@ -17,9 +21,11 @@ import com.example.intership.domain.dto.LogDto
 import com.example.intership.ui.image.ImageActivity
 import com.example.intership.ui.register.RegisterLogDialog
 import com.example.intership.ui.update.UpdateLogDialog
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.ByteArrayOutputStream
+import java.time.LocalDate
+import java.util.*
 
 
 class ListLogsActivity : AppCompatActivity() {
@@ -40,14 +46,31 @@ class ListLogsActivity : AppCompatActivity() {
         viewModel.listLogs()
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.listLogs()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_list_logs,menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val datePicker =
+            MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Selecione a Data")
+                .build()
+        datePicker.addOnPositiveButtonClickListener {day->
+            val dateString: String = DateFormat.format("yyyy-MM-dd", Date(day)).toString()
+            adapter.setNewData(LocalDate.parse(dateString))
+        }
+        when(item.itemId){
+            R.id.idCalendar -> {
+                datePicker.show(supportFragmentManager, "tag")
+
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
     private fun setupEvents() {
         viewModel.logsResult.observe(this){result -> onListSuccess(result)}
@@ -83,19 +106,19 @@ class ListLogsActivity : AppCompatActivity() {
         }
     }
     private fun openInGallery(position: Int) {
-        //val image = Base64.decode(adapter.logs[position].imgAmostras, Base64.DEFAULT)
+        //val image = decode(adapter.logs[position].imgAmostras, DEFAULT)
         //val bitmap = BitmapFactory.decodeByteArray(image,0, image.size)
         //val intent = Intent().also { intent ->  intent.action=Intent.ACTION_VIEW
-                             //       intent.data = getImageUri(this,bitmap) }
+          //                         intent.data = getImageUri(this,bitmap) }
         val log = adapter.logs[position]
-        val intent = Intent(this,ImageActivity::class.java).putExtra("LOG",log)
+        val intent = Intent(this, ImageActivity::class.java).putExtra("LOG",log)
         startActivity(intent)
     }
 
 
 
     private fun onListSuccess(logs:List<LogDto>){
-        adapter.logs = logs
+        adapter.mlogs = logs
         adapter.setNewData()
         binding.srlLogs.isRefreshing = false
 
