@@ -61,12 +61,9 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
             binding.tvDate.text = log.date.format(dateFormater)
             showIfHasAny(log)
             binding.tvLocaldeColeta.text = log.localDeColeta
-            if(log.imgAmostras==""){
-                binding.btnImage.visibility=View.GONE
-            }
-            else{
-                binding.btnImage.visibility=View.VISIBLE
-            }
+            showEdit(log)
+            showImage(log)
+
 
 
         }
@@ -92,11 +89,23 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
 
 
             }
-    }
-    fun hasAny(log:LogDto) :Boolean{
-        return log.citrato=="0" && log.edta=="0" && log.fezes=="0" && log.soro=="0" && log.urina=="0"
-    }
-    }
+        fun showEdit(log: LogDto){
+            if(LocalDate.parse(log.date.toString().removeRange(10,23)) == LocalDate.now()){
+            binding.btnEdit.visibility=View.VISIBLE
+        }
+        else{
+            binding.btnEdit.visibility=View.GONE
+        }}
+        fun showImage(log: LogDto){
+            if(log.imgAmostras!=""){
+                binding.btnImage.visibility=View.VISIBLE
+            }
+            else{
+                binding.btnImage.visibility=View.GONE
+            }}
+
+
+    }}
 
 
 

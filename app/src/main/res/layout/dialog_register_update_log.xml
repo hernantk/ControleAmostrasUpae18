@@ -29,7 +29,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
-            android:text="-"
+            app:icon="@drawable/ic_baseline_minimize_24"
+            app:iconGravity="textTop"
+            app:iconPadding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +41,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="14dp"
-            android:text="+"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvEdtaQtd"
             app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +88,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
-            android:text="-"
+            app:icon="@drawable/ic_baseline_minimize_24"
+            app:iconGravity="textTop"
+            app:iconPadding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,7 +100,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:text="+"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvSoroQtd"
             app:layout_constraintTop_toTopOf="parent" />
@@ -139,7 +147,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
-            android:text="-"
+            app:icon="@drawable/ic_baseline_minimize_24"
+            app:iconGravity="textTop"
+            app:iconPadding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -149,7 +159,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:text="+"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvUrinaQtd"
             app:layout_constraintTop_toTopOf="parent" />
@@ -195,7 +207,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
-            android:text="-"
+            app:icon="@drawable/ic_baseline_minimize_24"
+            app:iconGravity="textTop"
+            app:iconPadding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -205,7 +219,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:text="+"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvFezesQtd"
             app:layout_constraintTop_toTopOf="parent" />
@@ -263,7 +279,9 @@
             android:layout_height="40dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="14dp"
-            android:text="-"
+            app:icon="@drawable/ic_baseline_minimize_24"
+            app:iconGravity="textTop"
+            app:iconPadding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -273,7 +291,10 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
-            android:text="+"
+            android:textAlignment="center"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvCitratoQtd"
             app:layout_constraintTop_toTopOf="parent" />
