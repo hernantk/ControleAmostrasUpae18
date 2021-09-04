@@ -131,10 +131,8 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
     private fun convertImage(): String {
 
         return if(binding.imgAmostras.drawable!=null){
-            val imageNoLoss: ImageView = binding.imgAmostras
-            imageNoLoss.setImageURI(pictureUri)
             val byteArrayOutputStream = ByteArrayOutputStream()
-            val image = imageNoLoss.drawToBitmap()
+            val image = binding.imgAmostras.drawToBitmap()
             image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
             Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
 

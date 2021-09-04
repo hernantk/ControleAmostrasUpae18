@@ -8,13 +8,17 @@
 
     <ImageView
         android:id="@+id/imgAmostras"
-        android:layout_width="170dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="185dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/consCitrato"
         app:layout_constraintTop_toBottomOf="@+id/consFezes" />
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -74,6 +78,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consSoro"
