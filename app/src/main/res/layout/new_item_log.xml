@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="135dp"
     android:id="@+id/tvLog"
     >
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="115dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -28,17 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="78dp"
-                android:layout_marginBottom="8dp"
-                android:text="28/06/2021 08:00"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tvCitrato"
@@ -48,23 +38,23 @@
                 android:layout_marginEnd="48dp"
                 android:text="@string/textCitrato"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/tvSoro" />
 
             <TextView
                 android:id="@+id/tvFezes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="48dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/textFezes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvCitrato" />
+                app:layout_constraintEnd_toStartOf="@+id/tvCitrato"
+                app:layout_constraintTop_toBottomOf="@+id/tvSoro" />
 
             <TextView
                 android:id="@+id/tvEdta"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="@string/textEdta"
                 app:layout_constraintEnd_toStartOf="@+id/tvSoro"
                 app:layout_constraintTop_toTopOf="@+id/tvSoro" />
@@ -82,20 +72,23 @@
                 android:id="@+id/tvSoro"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/textSoro"
                 app:layout_constraintEnd_toStartOf="@+id/tvCitrato"
-                app:layout_constraintTop_toTopOf="@+id/tvCitrato" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <com.google.android.material.chip.Chip
                 android:id="@+id/tvLocaldeColeta"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="4dp"
                 android:text="Centro de Saude (18)"
+                android:textSize="10dp"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageButton
                 android:id="@+id/btnImage"
@@ -121,6 +114,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnImage"
                 app:srcCompat="@drawable/ic_baseline_edit_24" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/tvDate"
+                android:layout_width="99dp"
+                android:layout_height="32dp"
+                android:text="28/06/2021 08:00"
+                android:textSize="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

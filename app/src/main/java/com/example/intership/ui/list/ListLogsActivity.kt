@@ -3,14 +3,10 @@ package com.example.intership.ui.list
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.format.DateFormat
-import android.util.Base64
-import android.util.Base64.DEFAULT
-import android.util.Base64.decode
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity

@@ -1,21 +1,15 @@
-package com.example.intership.ui.list
 
-import android.graphics.BitmapFactory
-import android.text.format.DateFormat
-import android.util.Base64
+package com.example.intership.ui.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intership.R
 import com.example.intership.databinding.ItemLogBinding
 import com.example.intership.domain.dto.LogDto
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> Unit) : RecyclerView.Adapter<ListLogsAdapter.LogsViewHolder>() {
 
@@ -57,16 +51,26 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
         private val binding = ItemLogBinding.bind(itemView)
 
         fun bing(log: LogDto){
+            val context = binding.root.context
             val dateFormater = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
+
             binding.tvDate.text = log.date.format(dateFormater)
-            showIfHasAny(log)
+            binding.tvEdta.text = context.getString(R.string.textEdta,log.edta)
+            binding.tvSoro.text = context.getString(R.string.textSoro,log.soro)
+            binding.tvCitrato.text = context.getString(R.string.textCitrato,log.citrato)
+            binding.tvFezes.text = context.getString(R.string.textFezes,log.fezes)
+            binding.tvUrina.text = context.getString(R.string.textUrina,log.urina)
+            binding.tvEdta.visibility = View.VISIBLE
+            binding.tvSoro.visibility = View.VISIBLE
+            binding.tvCitrato.visibility = View.VISIBLE
+            binding.tvFezes.visibility = View.VISIBLE
+            binding.tvUrina.visibility = View.VISIBLE
             binding.tvLocaldeColeta.text = log.localDeColeta
-            showEdit(log)
-            showImage(log)
-
-
-
+            changeColorChipLocalColeta(log)
+            showButtonEdit(log)
+            showButtonImage(log)
         }
+
         val btnUpdateItem: ImageButton
             get() = binding.btnEdit
 
@@ -74,35 +78,23 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
             get() = binding.btnImage
 
 
-        fun showIfHasAny(log:LogDto){
-            val context = binding.root.context
-                binding.tvEdta.text = context.getString(R.string.textEdta,log.edta)
-                binding.tvSoro.text = context.getString(R.string.textSoro,log.soro)
-                binding.tvCitrato.text = context.getString(R.string.textCitrato,log.citrato)
-                binding.tvFezes.text = context.getString(R.string.textFezes,log.fezes)
-                binding.tvUrina.text = context.getString(R.string.textUrina,log.urina)
-                binding.tvEdta.visibility = View.VISIBLE
-                binding.tvSoro.visibility = View.VISIBLE
-                binding.tvCitrato.visibility = View.VISIBLE
-                binding.tvFezes.visibility = View.VISIBLE
-                binding.tvUrina.visibility = View.VISIBLE
+
+        private fun showButtonEdit(log: LogDto){
+            if(LocalDate.parse(log.date.toString().removeRange(10,23)) == LocalDate.now()) { binding.btnEdit.visibility=View.VISIBLE }
+            else{ binding.btnEdit.visibility=View.GONE }}
+
+        private fun showButtonImage(log: LogDto){
+            if(log.imgAmostras!=""){ binding.btnImage.visibility=View.VISIBLE }
+            else{ binding.btnImage.visibility=View.GONE }}
 
 
-            }
-        fun showEdit(log: LogDto){
-            if(LocalDate.parse(log.date.toString().removeRange(10,23)) == LocalDate.now()){
-            binding.btnEdit.visibility=View.VISIBLE
+        private fun changeColorChipLocalColeta(log: LogDto){
+            if(log.localDeColeta=="Upa") {
+                binding.tvLocaldeColeta.setBackgroundColor(binding.root.resources.getColor(R.color.brown)) }
+
         }
-        else{
-            binding.btnEdit.visibility=View.GONE
-        }}
-        fun showImage(log: LogDto){
-            if(log.imgAmostras!=""){
-                binding.btnImage.visibility=View.VISIBLE
-            }
-            else{
-                binding.btnImage.visibility=View.GONE
-            }}
+
+
 
 
     }}

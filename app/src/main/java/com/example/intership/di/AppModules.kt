@@ -1,7 +1,6 @@
 package com.example.intership.di
 
 import com.example.intership.domain.repository.LogRepository
-import com.example.intership.ui.list.ListLogsAdapter
 import com.example.intership.ui.list.ListLogsViewModel
 import com.example.intership.ui.register.RegisterLogViewModel
 import com.example.intership.ui.update.UpdateLogViewModel
