@@ -8,6 +8,14 @@
     <string name="textCitrato">%s de Citrato</string>
     <string name="textUrina">%s de Urina</string>
     <string name="textFezes">%s de Fezes</string>
+    <string name="Date_and_time">28/06/2021 08:00</string>
+    <string name="local_coleta_longo">Centro de Saude (18)</string>
+    <string name="local_coleta_upa">Upa</string>
+
+    <string-array name="todos_locais_coleta">
+        <item>Upa</item>
+        <item>Centro de Saude (18)</item>
+    </string-array>
 
 
 </resources>

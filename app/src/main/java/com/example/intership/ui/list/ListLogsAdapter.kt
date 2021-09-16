@@ -1,12 +1,14 @@
 
 package com.example.intership.ui.list
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intership.R
-import com.example.intership.databinding.ItemLogBinding
+import com.example.intership.databinding.NewItemLogBinding
 import com.example.intership.domain.dto.LogDto
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -48,7 +50,7 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
 
 
     inner class LogsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val binding = ItemLogBinding.bind(itemView)
+        private val binding = NewItemLogBinding.bind(itemView)
 
         fun bing(log: LogDto){
             val context = binding.root.context
@@ -60,13 +62,9 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
             binding.tvCitrato.text = context.getString(R.string.textCitrato,log.citrato)
             binding.tvFezes.text = context.getString(R.string.textFezes,log.fezes)
             binding.tvUrina.text = context.getString(R.string.textUrina,log.urina)
-            binding.tvEdta.visibility = View.VISIBLE
-            binding.tvSoro.visibility = View.VISIBLE
-            binding.tvCitrato.visibility = View.VISIBLE
-            binding.tvFezes.visibility = View.VISIBLE
-            binding.tvUrina.visibility = View.VISIBLE
-            binding.tvLocaldeColeta.text = log.localDeColeta
-            changeColorChipLocalColeta(log)
+
+
+            displayImageLocalColeta(log.localDeColeta)
             showButtonEdit(log)
             showButtonImage(log)
         }
@@ -88,9 +86,12 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
             else{ binding.btnImage.visibility=View.GONE }}
 
 
-        private fun changeColorChipLocalColeta(log: LogDto){
-            if(log.localDeColeta=="Upa") {
-                binding.tvLocaldeColeta.setBackgroundColor(binding.root.resources.getColor(R.color.brown)) }
+        private fun displayImageLocalColeta(localColeta: String){
+
+            when(localColeta){
+                "Centro de Saude (18)" -> binding.imgLocaldeColeta.setImageResource(R.drawable.ic_local_de_coleta_centro_de_saude)
+                "Upa"-> binding.imgLocaldeColeta.setImageResource(R.mipmap.ic_local_de_coleta_upa_round)
+            }
 
         }
 

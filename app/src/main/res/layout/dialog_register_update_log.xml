@@ -11,9 +11,7 @@
         android:layout_width="185dp"
         android:layout_height="147dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/consCitrato"
         app:layout_constraintTop_toBottomOf="@+id/consFezes" />
@@ -262,14 +260,15 @@
         android:id="@+id/btnSave"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="Salvar"
 
-        app:icon="@drawable/ic_baseline_add_task_24"
+        android:layout_marginTop="10dp"
+        android:text="Salvar"
         android:textAlignment="center"
+        app:icon="@drawable/ic_baseline_add_task_24"
         app:layout_constraintEnd_toStartOf="@+id/btnCamera"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toEndOf="@+id/btnDelete"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/imgAmostras" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/consCitrato"
@@ -337,20 +336,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/consCitrato">
-
-        <RadioButton
-            android:id="@+id/rbUpa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upa" />
-
-        <RadioButton
-            android:id="@+id/rb18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Centro de Saude (18)" />
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/consCitrato"/>
 
     <ImageButton
         android:id="@+id/btnDelete"
@@ -371,6 +357,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
+
+    <Spinner
+        android:id="@+id/spLocalColeta"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/consCitrato" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

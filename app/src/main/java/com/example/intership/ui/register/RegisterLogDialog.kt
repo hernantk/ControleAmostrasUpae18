@@ -8,10 +8,14 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
+import androidx.core.view.get
+import com.example.intership.R
 import com.example.intership.databinding.DialogRegisterUpdateLogBinding
 import com.example.intership.domain.dto.RegisterDto
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -42,8 +46,11 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupEvents()
+        setupUnitSpinner()
 
     }
+
+
 
     private fun setupEvents() {
         binding.btnSave.setOnClickListener{save()}
@@ -88,13 +95,6 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
     private fun plusFezes(){ binding.tvFezesQtd.text = (binding.tvFezesQtd.text.toString().toInt()+1).toString() }
     private fun minusFezes(){ if(binding.tvFezesQtd.text.toString().toInt()>0){binding.tvFezesQtd.text = (binding.tvFezesQtd.text.toString().toInt()-1).toString() }}
 
-    private fun rbSelected():String{
-        return if(binding.rbUpa.isChecked){
-            binding.rbUpa.text.toString()
-        } else{
-            binding.rb18.text.toString()
-        }
-    }
 
     private fun save() {
         viewModel.save(RegisterDto(LocalDateTime.now().toString(),
@@ -103,7 +103,7 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
                         binding.tvCitratoQtd.text.toString().toInt().toString(),
                         binding.tvFezesQtd.text.toString().toInt().toString(),
                         binding.tvUrinaQtd.text.toString().toInt().toString(),
-                        rbSelected(),
+                        binding.spLocalColeta.selectedItem.toString(),
                         convertImage()))
         onSaveSuccess()
     }
@@ -139,6 +139,15 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
 
         }else{
             ""
-        }
-}
+        } }
+
+    private fun setupUnitSpinner() {
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(), R.array.todos_locais_coleta,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.spLocalColeta.adapter = adapter
+    }
 }

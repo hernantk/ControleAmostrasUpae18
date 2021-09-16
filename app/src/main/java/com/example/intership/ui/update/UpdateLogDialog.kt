@@ -9,9 +9,11 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
+import com.example.intership.R
 import com.example.intership.databinding.DialogRegisterUpdateLogBinding
 import com.example.intership.domain.dto.LogDto
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -38,9 +40,10 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupUnitSpinner()
         setupEvents()
         loadValues()
+
 
     }
 
@@ -51,7 +54,14 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
             binding.tvEdtaQtd.text = log.edta
             binding.tvCitratoQtd.text = log.citrato
             binding.tvSoroQtd.text = log.soro
-            loadRb()
+            setSpinnerSelection()
+    }
+
+    private fun setSpinnerSelection() {
+        when(log.localDeColeta){
+            "Upa"-> binding.spLocalColeta.setSelection(0)
+            "Centro de Saude (18)" -> binding.spLocalColeta.setSelection(1)
+        }
     }
 
     private fun setupEvents() {
@@ -99,23 +109,7 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
     private fun plusFezes(){ binding.tvFezesQtd.text = (binding.tvFezesQtd.text.toString().toInt()+1).toString() }
     private fun minusFezes(){ if(binding.tvFezesQtd.text.toString().toInt()>0){binding.tvFezesQtd.text = (binding.tvFezesQtd.text.toString().toInt()-1).toString() }}
 
-    private fun rbSelected():String{
-        return if(binding.rbUpa.isChecked){
-            binding.rbUpa.text.toString()
-        } else{
-            binding.rb18.text.toString()
-        }
-    }
-    private fun loadRb(){
-        val image = Base64.decode(log.imgAmostras, Base64.DEFAULT)
-        binding.imgAmostras.setImageBitmap(BitmapFactory.decodeByteArray(image,0, image.size))
-        if(log.localDeColeta==binding.rbUpa.text){
-            binding.rbUpa.isChecked=true
-        }
-        else{
-            binding.rb18.isChecked=true
-        }
-    }
+
 
     private fun update() {
         viewModel.update(LogDto(log.id,log.date,
@@ -124,7 +118,7 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
                         binding.tvCitratoQtd.text.toString(),
                         binding.tvFezesQtd.text.toString(),
                         binding.tvUrinaQtd.text.toString(),
-                        rbSelected(),
+                        "",
                         convertImage()))
         onSuccess()
     }
@@ -158,5 +152,15 @@ class UpdateLogDialog:BottomSheetDialogFragment() {
         image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
         return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
 
+    }
+
+    private fun setupUnitSpinner() {
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(), R.array.todos_locais_coleta,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.spLocalColeta.adapter = adapter
     }
 }

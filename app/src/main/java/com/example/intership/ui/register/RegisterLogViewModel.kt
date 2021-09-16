@@ -11,7 +11,6 @@ class RegisterLogViewModel(private val repository: LogRepository) : ViewModel() 
 
 
 
-
     private val mOnSaveSuccess: MutableLiveData<Unit> = MutableLiveData()
     val onSaveSuccess: LiveData<Unit>
         get() = mOnSaveSuccess
