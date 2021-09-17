@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Controle Upa e 18</string>
+    <string name="app_name">Controle Amostras</string>
 
 
     <string name="save">Salvar</string>
@@ -11,6 +11,13 @@
     <string name="Date_and_time">28/06/2021 08:00</string>
     <string name="local_coleta_longo">Centro de Saude (18)</string>
     <string name="local_coleta_upa">Upa</string>
+    <string name="_0">0</string>
+    <string name="TuboRoxoEdta">EDTA</string>
+    <string name="TuboVermelhoSoro">Soro</string>
+    <string name="FrascoUrina">Urina</string>
+    <string name="FrascoFezes">Fezes</string>
+    <string name="ButtonSave">Salvar</string>
+    <string name="TuboAzulCitrato">Citrato</string>
 
     <string-array name="todos_locais_coleta">
         <item>Upa</item>

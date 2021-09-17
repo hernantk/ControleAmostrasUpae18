@@ -1,26 +1,23 @@
 package com.example.intership.ui.register
 
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
-import androidx.core.view.get
 import com.example.intership.R
 import com.example.intership.databinding.DialogRegisterUpdateLogBinding
 import com.example.intership.domain.dto.RegisterDto
+import com.example.intership.utils.convertImageToBase64
+import com.example.intership.utils.minus
+import com.example.intership.utils.plus
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.time.LocalDateTime
 
@@ -55,20 +52,20 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
     private fun setupEvents() {
         binding.btnSave.setOnClickListener{save()}
 
-        binding.btnEdtaPlus.setOnClickListener{ plusEdta() }
-        binding.btnEdtaMinus.setOnClickListener{minusEdta()}
+        binding.btnEdtaPlus.setOnClickListener{ binding.tvEdtaQtd.text= plus(binding.tvEdtaQtd) }
+        binding.btnEdtaMinus.setOnClickListener{binding.tvEdtaQtd.text= minus(binding.tvEdtaQtd) }
 
-        binding.btnSoroPlus.setOnClickListener{ plusSoro() }
-        binding.btnSoroMinus.setOnClickListener{minusSoro()}
+        binding.btnSoroPlus.setOnClickListener{ binding.tvSoroQtd.text= plus(binding.tvSoroQtd)  }
+        binding.btnSoroMinus.setOnClickListener{binding.tvSoroQtd.text= minus(binding.tvSoroQtd) }
 
-        binding.btnCitratoPlus.setOnClickListener{ plusCitrato() }
-        binding.btnCitratoMinus.setOnClickListener{minusCitrato()}
+        binding.btnCitratoPlus.setOnClickListener{ binding.tvCitratoQtd.text= plus(binding.tvCitratoQtd) }
+        binding.btnCitratoMinus.setOnClickListener{binding.tvCitratoQtd.text= minus(binding.tvCitratoQtd) }
 
-        binding.btnFezesPlus.setOnClickListener{ plusFezes() }
-        binding.btnFezesMinus.setOnClickListener{minusFezes()}
+        binding.btnFezesPlus.setOnClickListener{ binding.tvFezesQtd.text= plus(binding.tvFezesQtd) }
+        binding.btnFezesMinus.setOnClickListener{binding.tvFezesQtd.text= minus(binding.tvFezesQtd) }
 
-        binding.btnUrinaPlus.setOnClickListener{ plusUrina() }
-        binding.btnUrinaMinus.setOnClickListener{minusUrina()}
+        binding.btnUrinaPlus.setOnClickListener{ binding.tvUrinaQtd.text= plus(binding.tvUrinaQtd) }
+        binding.btnUrinaMinus.setOnClickListener{binding.tvUrinaQtd.text= minus(binding.tvUrinaQtd) }
 
         binding.btnCamera.setOnClickListener{takePicture()}
 
@@ -80,31 +77,18 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
         dismiss()
     }
 
-    private fun plusEdta(){ binding.tvEdtaQtd.text = (binding.tvEdtaQtd.text.toString().toInt()+1).toString() }
-    private fun minusEdta(){ if(binding.tvEdtaQtd.text.toString().toInt()>0){binding.tvEdtaQtd.text = (binding.tvEdtaQtd.text.toString().toInt()-1).toString() }}
 
-    private fun plusSoro(){ binding.tvSoroQtd.text = (binding.tvSoroQtd.text.toString().toInt()+1).toString() }
-    private fun minusSoro(){ if(binding.tvSoroQtd.text.toString().toInt()>0){binding.tvSoroQtd.text = (binding.tvSoroQtd.text.toString().toInt()-1).toString() }}
-
-    private fun plusCitrato(){ binding.tvCitratoQtd.text = (binding.tvCitratoQtd.text.toString().toInt()+1).toString() }
-    private fun minusCitrato(){ if(binding.tvCitratoQtd.text.toString().toInt()>0){binding.tvCitratoQtd.text = (binding.tvCitratoQtd.text.toString().toInt()-1).toString() }}
-
-    private fun plusUrina(){ binding.tvUrinaQtd.text = (binding.tvUrinaQtd.text.toString().toInt()+1).toString() }
-    private fun minusUrina(){ if(binding.tvUrinaQtd.text.toString().toInt()>0){binding.tvUrinaQtd.text = (binding.tvUrinaQtd.text.toString().toInt()-1).toString() }}
-
-    private fun plusFezes(){ binding.tvFezesQtd.text = (binding.tvFezesQtd.text.toString().toInt()+1).toString() }
-    private fun minusFezes(){ if(binding.tvFezesQtd.text.toString().toInt()>0){binding.tvFezesQtd.text = (binding.tvFezesQtd.text.toString().toInt()-1).toString() }}
 
 
     private fun save() {
         viewModel.save(RegisterDto(LocalDateTime.now().toString(),
-                        binding.tvEdtaQtd.text.toString().toInt().toString(),
-                        binding.tvSoroQtd.text.toString().toInt().toString(),
-                        binding.tvCitratoQtd.text.toString().toInt().toString(),
-                        binding.tvFezesQtd.text.toString().toInt().toString(),
-                        binding.tvUrinaQtd.text.toString().toInt().toString(),
-                        binding.spLocalColeta.selectedItem.toString(),
-                        convertImage()))
+            binding.tvEdtaQtd.text.toString().toInt().toString(),
+            binding.tvSoroQtd.text.toString().toInt().toString(),
+            binding.tvCitratoQtd.text.toString().toInt().toString(),
+            binding.tvFezesQtd.text.toString().toInt().toString(),
+            binding.tvUrinaQtd.text.toString().toInt().toString(),
+            binding.spLocalColeta.selectedItem.toString(),
+            convertImageToBase64(binding.imgAmostras.drawToBitmap())))
         onSaveSuccess()
     }
 
@@ -127,19 +111,6 @@ class RegisterLogDialog:BottomSheetDialogFragment() {
 
         }
     }
-
-    private fun convertImage(): String {
-
-        return if(binding.imgAmostras.drawable!=null){
-            val byteArrayOutputStream = ByteArrayOutputStream()
-            val image = binding.imgAmostras.drawToBitmap()
-            image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-            Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
-
-
-        }else{
-            ""
-        } }
 
     private fun setupUnitSpinner() {
         val adapter = ArrayAdapter.createFromResource(

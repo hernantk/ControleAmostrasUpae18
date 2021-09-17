@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,7 +13,8 @@
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/consCitrato"
-        app:layout_constraintTop_toBottomOf="@+id/consFezes" />
+        app:layout_constraintTop_toBottomOf="@+id/consFezes"
+         />
 
 
 
@@ -56,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
-            android:text="0"
-            android:textSize="20dp"
+            android:text="@string/_0"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/btnEdtaMinus"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +67,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="EDTA"
+            android:text="@string/TuboRoxoEdta"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/purple_500"
+            app:chipStrokeWidth="1dp"
             app:chipIcon="@drawable/circle"
             app:chipIconTint="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -116,8 +119,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
-            android:text="0"
-            android:textSize="20dp"
+            android:text="@string/_0"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/btnSoroMinus"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,9 +130,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Soro"
+            android:text="@string/TuboVermelhoSoro"
             app:chipIcon="@drawable/circle"
             app:chipIconTint="@color/red"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/red"
+            app:chipStrokeWidth="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -175,8 +181,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
-            android:text="0"
-            android:textSize="20dp"
+            android:text="@string/_0"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/btnUrinaMinus"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -188,7 +194,10 @@
             android:layout_margin="8dp"
             app:chipIcon="@drawable/circle"
             app:chipIconTint="@color/yellow"
-            android:text="Urina"
+            android:text="@string/FrascoUrina"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/yellow"
+            app:chipStrokeWidth="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -235,8 +244,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
-            android:text="0"
-            android:textSize="20dp"
+            android:text="@string/_0"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/btnFezesMinus"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -246,9 +255,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Fezes"
+            android:text="@string/FrascoFezes"
             app:chipIcon="@drawable/circle"
             app:chipIconTint="@color/brown"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/brown"
+            app:chipStrokeWidth="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -261,8 +273,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="10dp"
-        android:text="Salvar"
+        android:layout_marginTop="4dp"
+        android:text="@string/ButtonSave"
         android:textAlignment="center"
         app:icon="@drawable/ic_baseline_add_task_24"
         app:layout_constraintEnd_toStartOf="@+id/btnCamera"
@@ -309,8 +321,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
-            android:text="0"
-            android:textSize="20dp"
+            android:text="@string/_0"
+            android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/btnCitratoMinus"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -320,7 +332,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Citrato"
+            android:text="@string/TuboAzulCitrato"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@color/teal_200"
+            app:chipStrokeWidth="1dp"
             app:chipIcon="@drawable/circle"
             app:chipIconTint="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -352,18 +367,19 @@
         android:id="@+id/btnCamera"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/imgAmostras"
         app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
 
     <Spinner
         android:id="@+id/spLocalColeta"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/consCitrato" />
 
