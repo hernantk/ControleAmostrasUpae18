@@ -40,11 +40,11 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
     override fun getItemCount() = logs.size
 
     fun setNewData(){
-        logs = mlogs.filter { logDto -> LocalDate.parse(logDto.date.toString().removeRange(10,23)) == LocalDate.now()  }
+        logs = mlogs.filter { logDto -> LocalDate.parse(logDto.date.toString().replaceAfter("T","").replace("T","")) == LocalDate.now()  }
         notifyDataSetChanged()
     }
     fun setNewData(date:LocalDate){
-        logs = mlogs.filter { logDto -> LocalDate.parse(logDto.date.toString().removeRange(10,23)) == date  }
+        logs = mlogs.filter { logDto -> LocalDate.parse(logDto.date.toString().replaceAfter("T","").replace("T","")) == date  }
         notifyDataSetChanged()
     }
 
@@ -78,7 +78,7 @@ class ListLogsAdapter(val goUpdateLog: (Int) -> Unit,val goOpenImage: (Int) -> U
 
 
         private fun showButtonEdit(log: LogDto){
-            if(LocalDate.parse(log.date.toString().removeRange(10,23)) == LocalDate.now()) { binding.btnEdit.visibility=View.VISIBLE }
+            if(LocalDate.parse(log.date.toString().replaceAfter("T","").replace("T","")) == LocalDate.now()) { binding.btnEdit.visibility=View.VISIBLE }
             else{ binding.btnEdit.visibility=View.GONE }}
 
         private fun showButtonImage(log: LogDto){

@@ -3,6 +3,7 @@ package com.example.intership.domain.repository
 import com.example.intership.domain.dto.LogDto
 import com.example.intership.domain.dto.RegisterDto
 import com.google.firebase.firestore.FirebaseFirestore
+import java.time.LocalDate
 import java.time.LocalDateTime
 import kotlin.reflect.KFunction1
 
